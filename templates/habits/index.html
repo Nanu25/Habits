@@ -1,6 +1,21 @@
 {% extends "habits/layout.html" %}
 
 {% block body %}
-    All habits will be displayed here.
+    
+    <h2>Habits</h2>
 
+    <ul class="habit-list">
+        {% for habit in habits %}
+            <li>
+                <h3>{{ habit.habit }}</h3>
+                <p>{{ habit.description }}</p>
+                <p>Completed: {{ habit.completed }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if not habits %}
+        <p>No habits yet.</p>
+    {% endif %}
+    
 {% endblock %}
