@@ -27,17 +27,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'habits.User'
 
 # Application definition
 
 INSTALLED_APPS = [
+    'habits',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "habits.apps.HabitsConfig"
 ]
 
 MIDDLEWARE = [
