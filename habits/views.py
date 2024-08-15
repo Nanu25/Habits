@@ -12,11 +12,16 @@ from habits.models import User, Habit
 # Create your views here.
 
 def index(request):
-    habits = Habit.objects.all()
+    # habits = Habit.objects.all()
+    habits = None
     return render(request, "habits/index.html", {
         "habits": habits
     })
-
+def main_page(request):
+    habits = Habit.objects.all()
+    return render(request, "habits/main_page.html", {
+        "habits": habits
+    })
 def login_view(request):
     if request.method == "POST":
 
@@ -28,7 +33,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("main_page"))
         else:
             return render(request, "habits/login.html", {
                 "message": "Invalid username and/or password."
@@ -64,7 +69,7 @@ def register(request):
                 "message": "Username already taken."
             })
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("main_page"))
     else:
         return render(request, "habits/register.html")
 
@@ -77,5 +82,5 @@ def add_habit(request):
         completed = request.POST.get("completed") == 'on'
         new_habit = Habit(user=request.user, habit=habit, description=description, completed=completed)
         new_habit.save()
-        return redirect('index')  # Redirect to a page of your choice after adding the habit
+        return redirect('main_page')  # Redirect to a page of your choice after adding the habit
     return render(request, "habits/add_habit.html")
