@@ -11,6 +11,7 @@ class Habit(models.Model):
     habit = models.CharField(max_length=64)
     description = models.CharField(max_length=255)
     completed = models.BooleanField(default=False)
+    times_completed = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.user} has a habit of {self.habit} and it is {self.completed}"

@@ -2,9 +2,10 @@ from sqlite3 import IntegrityError
 
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect, JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from habits.models import User, Habit
 
@@ -84,3 +85,22 @@ def add_habit(request):
         new_habit.save()
         return redirect('main_page')  # Redirect to a page of your choice after adding the habit
     return render(request, "habits/add_habit.html")
+
+
+@csrf_exempt  # Use this only if you are handling CSRF manually in the fetch request
+def mark_done(request, habit_id):
+    if request.method == 'POST':
+        habit = get_object_or_404(Habit, id=habit_id, user=request.user)
+
+        # Increment the completion count
+        habit.times_completed += 1
+        habit.completed = True  # Mark as completed
+        habit.save()
+
+        # Return JSON response
+        return JsonResponse({
+            'completed': habit.completed,
+            'times_completed': habit.times_completed,
+        })
+
+    return JsonResponse({'error': 'Invalid request'}, status=400)

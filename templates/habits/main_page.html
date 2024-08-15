@@ -3,8 +3,7 @@
 {% block body %}
     <div class="container mt-5">
         <div class="header">
-            <h2 class="text-center">Your Habits</h2>
-            <p class="text-center text-muted">Track your progress and build healthy habits every day!</p>
+            <h2>Your Habits</h2>
         </div>
 
         {% if habits %}
@@ -12,20 +11,25 @@
                 <div class="row">
                     {% for habit in habits %}
                         <div class="col-md-4 mb-3">
-                            <div class="card shadow-sm habit-card">
+                            <div class="card shadow-sm habit-card" id="habit-card-{{ habit.id }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ habit.habit }}</h5>
                                     <p class="card-text">{{ habit.description }}</p>
                                     <p class="card-text">
                                         <small class="text-muted">Status: 
-                                            {% if habit.completed %}
-                                                <span class="badge badge-success">Completed</span>
-                                            {% else %}
-                                                <span class="badge badge-warning">Not Completed</span>
-                                            {% endif %}
+                                            <span id="status-{{ habit.id }}">
+                                                {% if habit.completed %}
+                                                    <span class="badge badge-success">Completed</span>
+                                                {% else %}
+                                                    <span class="badge badge-warning">Not Completed</span>
+                                                {% endif %}
+                                            </span>
                                         </small>
                                     </p>
-                                    <a href="#" class="btn btn-primary btn-sm">Mark as Done</a>
+                                    <p class="card-text">
+                                        Times completed: <span id="times-completed-{{ habit.id }}">{{ habit.times_completed }}</span>
+                                    </p>
+                                    <button class="btn btn-primary btn-sm mark-done-btn" data-habit-id="{{ habit.id }}">Mark as Done</button>
                                 </div>
                             </div>
                         </div>
@@ -38,4 +42,50 @@
             </div>
         {% endif %}
     </div>
+
+    <!-- CSRF token hidden field -->
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the CSRF token value from the hidden input field
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    document.querySelectorAll('.mark-done-btn').forEach(button => {
+        button.onclick = function() {
+            const habitId = this.dataset.habitId;
+            const url = `/mark_done/${habitId}/`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken,  // Use the CSRF token value from the hidden input
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.error(data.error);
+                } else {
+                    // Update UI to reflect the changes
+                    const timesCompletedElement = document.querySelector(`#times-completed-${habitId}`);
+                    const newTimesCompleted = data.times_completed;
+
+                    timesCompletedElement.innerText = newTimesCompleted;
+
+                    // Check if the habit is completed 30 times
+                    if (newTimesCompleted >= 30) {
+                        document.querySelector(`#status-${habitId}`).innerHTML = '<span class="badge badge-success">Congrats, you built a habit!</span>';
+                    } else {
+                        document.querySelector(`#status-${habitId}`).innerHTML = data.completed ? '<span class="badge badge-success">Completed</span>' : '<span class="badge badge-warning">Not Completed</span>';
+                    }
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    });
+});
+
+    </script>
+    
 {% endblock %}
