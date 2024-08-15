@@ -1,21 +1,40 @@
 {% extends "habits/layout.html" %}
 
 {% block body %}
-    
-    <h2>Habits</h2>
+    <div class="container mt-5">
+        <div class="welcome-header text-center">
+            <h2 class="display-4">Welcome to Habit Builder</h2>
+            <p class="lead text-muted">Build better habits, track your progress, and achieve your goals.</p>
+        </div>
 
-    <ul class="habit-list">
-        {% for habit in habits %}
-            <li>
-                <h3>{{ habit.habit }}</h3>
-                <p>{{ habit.description }}</p>
-                <p>Completed: {{ habit.completed }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+        <div class="row mt-5">
+            <div class="col-md-4 text-center">
+{#                <img src="{% static 'habits/images/habit1.svg' %}" alt="Habit Illustration 1" class="img-fluid mb-3">#}
+                <h4>Set Your Goals</h4>
+                <p>Define the habits you want to develop and set clear, actionable goals.</p>
+            </div>
+            <div class="col-md-4 text-center">
+{#                <img src="{% static 'habits/images/habit2.svg' %}" alt="Habit Illustration 2" class="img-fluid mb-3">#}
+                <h4>Track Your Progress</h4>
+                <p>Monitor your daily progress and see how far you've come with intuitive tracking tools.</p>
+            </div>
+            <div class="col-md-4 text-center">
+{#                <img src="{% static 'habits/images/habit3.svg' %}" alt="Habit Illustration 3" class="img-fluid mb-3">#}
+                <h4>Stay Motivated</h4>
+                <p>Receive personalized reminders and motivational tips to keep you on track.</p>
+            </div>
+        </div>
 
-    {% if not habits %}
-        <p>No habits yet.</p>
-    {% endif %}
-    
+        <div class="text-center mt-5">
+            <a href="{% url 'register' %}" class="btn btn-primary btn-lg mr-2">Get Started</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-lg">Log In</a>
+        </div>
+
+        <div class="why-habits mt-5">
+            <h3 class="text-center">Why Building Habits Matters</h3>
+            <p class="text-center text-muted mt-3">
+                Building good habits is the foundation for a successful and fulfilling life. Whether you want to improve your health, increase productivity, or develop new skills, habits are the key to lasting change. Join our community of motivated individuals and start your habit-building journey today!
+            </p>
+        </div>
+    </div>
 {% endblock %}

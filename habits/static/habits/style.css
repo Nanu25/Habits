@@ -145,3 +145,110 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     max-width: 200px;
     border-radius: 5px;
 }
+
+/* Basic page styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.header h2 {
+    color: #343a40;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+/* Card styles for habits */
+.habit-card {
+    border: none;
+    border-radius: 8px;
+    background-color: #ffffff;
+}
+
+.habit-card .card-title {
+    font-size: 1.25rem;
+    color: #007bff;
+}
+
+.habit-card .card-text {
+    color: #495057;
+}
+
+.habit-card .badge {
+    font-size: 0.9rem;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Alert message styling */
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+
+/* Welcome page styles */
+.welcome-header {
+    margin-bottom: 50px;
+}
+
+.welcome-header h2 {
+    font-size: 2.5rem;
+    color: #343a40;
+}
+
+.welcome-header p {
+    color: #6c757d;
+}
+
+.why-habits h3 {
+    font-size: 2rem;
+    color: #007bff;
+}
+
+.why-habits p {
+    font-size: 1.1rem;
+    color: #495057;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-outline-secondary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #007bff;
+    color: #ffffff;
+    border-color: #0056b3;
+}
