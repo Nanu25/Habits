@@ -95,6 +95,8 @@ def mark_done(request, habit_id):
         # Increment the completion count
         habit.times_completed += 1
         habit.completed = True  # Mark as completed
+        if(habit.times_completed == 30):
+            habit.status = "Habit completed"
         habit.save()
 
         # Return JSON response
