@@ -1,7 +1,4 @@
-/* habits/styles.css */
 
-/* General Styles */
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -120,8 +117,13 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     padding: 20px;
     background-color: #6c63ff;
     color: #fff;
-    margin-top: 30px;
     border-top: 5px solid #4b42d3;
+
+    /* Fixed at the bottom */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 .footer a {
@@ -260,3 +262,24 @@ body {
 
 .card-text {
     margin-top: 1rem;
+}
+
+.habit-info {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;  /* White text for strong contrast */
+    background: linear-gradient(45deg, #ff6b6b, #f94d6a);  /* Vibrant gradient background */
+    padding: 10px 15px;
+    margin-top: 12px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Soft shadow for depth */
+    border: 2px solid #ff4757;  /* Bold border to define the area */
+    letter-spacing: 0.5px;  /* Slight letter spacing for readability */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.habit-info:hover {
+    transform: scale(1.05);  /* Slightly enlarge on hover for interaction */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);  /* Enhanced shadow on hover */
+}

@@ -2,6 +2,7 @@ from sqlite3 import IntegrityError
 
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
@@ -81,7 +82,8 @@ def add_habit(request):
         habit = request.POST.get("habit")
         description = request.POST.get("description")
         status = "Habit at the beginning"
-        new_habit = Habit(user=request.user, habit=habit, description=description, status=status)
+        private = request.POST.get("private") == "on"
+        new_habit = Habit(user=request.user, habit=habit, description=description, status=status, private=private)
         new_habit.save()
         return redirect('main_page')  # Redirect to a page of your choice after adding the habit
     return render(request, "habits/add_habit.html")
@@ -95,7 +97,7 @@ def mark_done(request, habit_id):
         # Increment the completion count
         habit.times_completed += 1
         habit.completed = True  # Mark as completed
-        if(habit.times_completed == 30):
+        if habit.times_completed == 30:
             habit.status = "Habit completed"
         habit.save()
 
@@ -106,3 +108,16 @@ def mark_done(request, habit_id):
         })
 
     return JsonResponse({'error': 'Invalid request'}, status=400)
+
+
+def top_habits(request):
+    top_habit = (
+        Habit.objects
+        .filter(private=False)  # Filter to include only non-private habits
+        .values('habit')
+        .annotate(habit_count=Count('habit'))
+        .order_by('-habit_count')[:6]
+    )
+    return render(request, 'habits/top_habits.html', {
+        'top_habits': top_habit
+    })
