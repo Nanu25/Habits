@@ -19,7 +19,7 @@ def index(request):
         "habits": habits
     })
 def main_page(request):
-    habits = Habit.objects.all()
+    habits = Habit.objects.filter(user=request.user)
     return render(request, "habits/main_page.html", {
         "habits": habits
     })
@@ -80,8 +80,8 @@ def add_habit(request):
     if request.method == "POST":
         habit = request.POST.get("habit")
         description = request.POST.get("description")
-        completed = request.POST.get("completed") == 'on'
-        new_habit = Habit(user=request.user, habit=habit, description=description, completed=completed)
+        status = "Habit at the beginning"
+        new_habit = Habit(user=request.user, habit=habit, description=description, status=status)
         new_habit.save()
         return redirect('main_page')  # Redirect to a page of your choice after adding the habit
     return render(request, "habits/add_habit.html")

@@ -10,8 +10,8 @@ class Habit(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="habits")
     habit = models.CharField(max_length=64)
     description = models.CharField(max_length=255)
-    completed = models.BooleanField(default=False)
+    status = models.CharField(max_length=64, default="Habit being formed")
     times_completed = models.IntegerField(default=0)
 
     def __str__(self):
-        return f"{self.user} has a habit of {self.habit} and it is {self.completed}"
+        return f"{self.user} has a habit of {self.habit} and it is {self.status}"
