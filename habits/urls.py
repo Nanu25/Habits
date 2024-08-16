@@ -10,4 +10,6 @@ urlpatterns = [
     path("add_habit", views.add_habit, name="add_habit"),
     path('main', views.main_page, name='main_page'),
     path('mark_done/<int:habit_id>/', views.mark_done, name='mark_done'),
+    path('top_habits', views.top_habits, name='top_habits'),
+
 ]

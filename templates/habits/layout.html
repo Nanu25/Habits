@@ -27,6 +27,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'main_page' %}">Home</a>
                 </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'top_habits' %}">Top habits</a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'add_habit' %}"> Add habit</a>
@@ -51,5 +55,10 @@
         {% block body %}
         {% endblock %}
     </div>
+
+    <div class="footer">
+        Made with ❤️ by <strong> Grancea Alexandru</strong>
+    </div>
+
 </body>
 </html>

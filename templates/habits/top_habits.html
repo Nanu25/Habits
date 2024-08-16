@@ -1,0 +1,30 @@
+{% extends "habits/layout.html" %}
+
+{% block body %}
+
+    <h2> Most common habits </h2>
+    <div class="container mt-5">
+
+        {% if top_habits %}
+            <div class="habit-list mt-4">
+                <div class="row">
+                    {% for habit in top_habits %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card shadow-sm habit-card" id="habit-card-{{ habit.id }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ habit.habit }}</h5>
+                                </div>
+                                 <p class="habit-info">This habit is made by {{ habit.habit_count }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-info text-center mt-4" role="alert">
+                There aren't any habits. <a href="{% url 'add_habit' %}" class="alert-link">Add a new habit</a> to get started!
+            </div>
+        {% endif %}
+    </div>
+    
+{% endblock %}

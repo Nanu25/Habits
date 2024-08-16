@@ -5,7 +5,7 @@ from django.contrib import admin
 from .models import User, Habit
 
 class HabitAdmin(admin.ModelAdmin):
-    list_display = ("habit", "description", "status", "times_completed")
+    list_display = ("habit", "description", "status", "times_completed", "private")
 
 admin.site.register(User)
 admin.site.register(Habit, HabitAdmin)

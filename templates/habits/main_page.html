@@ -63,7 +63,7 @@
     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
     
     <script>
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
     document.querySelectorAll('.mark-done-btn').forEach(button => {
