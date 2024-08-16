@@ -252,3 +252,11 @@ body {
     color: #ffffff;
     border-color: #0056b3;
 }
+
+
+.progress {
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    margin-top: 1rem;
