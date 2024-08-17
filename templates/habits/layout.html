@@ -1,13 +1,14 @@
 {% load static %}
 {% load custom_filters %}
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>{% block title %}Habits{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{% static 'habits/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
     <div class="header">
@@ -16,7 +17,7 @@
     
     {% if user.is_authenticated %}
         <div class="login-status">
-            Login as: {{ user.username }}
+            Login as: {{ user.username }} <i class="fa-solid fa-certificate" style="color: #74C0FC;"></i>
         </div>
     {% endif %}
    
@@ -51,9 +52,37 @@
         </div>
     </nav>
 
-    <div class="body">
-        {% block body %}
-        {% endblock %}
+    <!-- Main content area -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Main habits section -->
+            <div class="col-md-8">
+                <div class="main-content">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+
+            <!-- Badge section -->
+            <div class="col-md-4">
+                <div class="badge-section">
+                    <h5>Your Badges</h5>
+                    {% for badge in user_badges %}
+                        <div class="reward-badge">
+                           {% if badge == "Starter Badge" %}
+                                <i class="fas fa-medal starter-badge" title="Starter Badge"></i>
+                           {% elif badge == "Consistency Badge" %}
+                                <i class="fas fa-award consistency-badge" title="Consistency Badge"></i>
+                           {% elif badge == "Master Badge" %}
+                                <i class="fas fa-trophy master-badge" title="Master Badge"></i>
+                           {% endif %}
+                        </div>
+                    {% empty %}
+                        <p>No badges earned yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="footer">

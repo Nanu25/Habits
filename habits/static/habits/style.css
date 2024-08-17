@@ -93,22 +93,42 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     transition: width 0.5s ease;
 }
 
+/* Remove background, padding, and border-radius */
 .reward-badge {
     display: inline-block;
-    background-color: #ffe600;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 14px;
     margin: 10px 5px;
     text-align: center;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease;
+    box-shadow: none; /* No shadow */
+    background-color: transparent; /* No background */
+    padding: 0; /* Remove padding */
+    border-radius: 0; /* Remove rounded corners */
+    font-size: 14px; /* Adjust font size if needed */
 }
 
-.reward-badge:hover {
+/* Badge icons */
+.badge-section i.fas {
+    font-size: 50px;
+    margin: 10px 5px;
+    color: #ffd700; /* Default Gold color for icons */
+}
+
+/* Customize specific badges */
+.starter-badge {
+    color: #ffeb3b; /* Yellow for Starter Badge */
+}
+
+.consistency-badge {
+    color: #ff5722; /* Orange for Consistency Badge */
+}
+
+.master-badge {
+    color: #4caf50; /* Green for Master Badge */
+}
+
+/* Hover effect for the icons */
+.reward-badge i.fas:hover {
     transform: scale(1.1);
+    transition: transform 0.2s ease;
 }
 
 /* Footer */
@@ -118,12 +138,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     background-color: #6c63ff;
     color: #fff;
     border-top: 5px solid #4b42d3;
-
-    /* Fixed at the bottom */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    margin-top: 20px; /* Add space above the footer */
 }
 
 .footer a {
@@ -134,6 +149,18 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 
 .footer a:hover {
     text-decoration: underline;
+}
+
+/* Make sure the body content fills at least the viewport height minus the footer height */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content area to grow to fill the space */
+.body {
+    flex: 1;
 }
 
 /* Login Status Styles */
@@ -283,3 +310,21 @@ body {
     transform: scale(1.05);  /* Slightly enlarge on hover for interaction */
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);  /* Enhanced shadow on hover */
 }
+
+.main-content {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.badge-section {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-left: 20px; /* Adjust this as needed for spacing */
+}
+
