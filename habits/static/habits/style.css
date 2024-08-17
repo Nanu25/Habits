@@ -93,6 +93,12 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     transition: width 0.5s ease;
 }
 
+.badge-section {
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+}
+
 /* Remove background, padding, and border-radius */
 .reward-badge {
     display: inline-block;
