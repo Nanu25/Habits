@@ -19,10 +19,38 @@ def index(request):
     return render(request, "habits/index.html", {
         "habits": habits
     })
+
+
 def main_page(request):
+    # Get all habits for the current user
     habits = Habit.objects.filter(user=request.user)
+
+    # Calculate total completed habits (assuming 'times_completed' tracks this)
+    # total_completed = habits.aggregate(total=Sum('times_completed'))['total'] or 0
+    #
+    # # Determine badges based on the total completed habits
+    # user_badges = []
+    # if total_completed >= 1:
+    #     user_badges.append("Starter Badge")
+    # if total_completed >= 10:
+    #     user_badges.append("Consistency Badge")
+    # if total_completed >= 30:
+    #     user_badges.append("Master Badge")
+
+    user_badges = []
+    user_badges.append("Starter Badge")
+    user_badges.append("Consistency Badge")
+    user_badges.append("Master Badge")
+    user_badges.append("Starter Badge")
+    user_badges.append("Starter Badge")
+    user_badges.append("Consistency Badge")
+    user_badges.append("Master Badge")
+    user_badges.append("Starter Badge")
+
+    # Render the main page with habits and badges
     return render(request, "habits/main_page.html", {
-        "habits": habits
+        "habits": habits,
+        "user_badges": user_badges
     })
 def login_view(request):
     if request.method == "POST":
