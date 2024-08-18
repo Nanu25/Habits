@@ -14,21 +14,21 @@
     <div class="header">
         <h1>Habits</h1>
     </div>
-    
+
     {% if user.is_authenticated %}
         <div class="login-status">
             Login as: {{ user.username }} <i class="fa-solid fa-certificate" style="color: #74C0FC;"></i>
         </div>
     {% endif %}
-   
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="nav-links">
-        
+
             {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'main_page' %}">Home</a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'top_habits' %}">Top habits</a>
                 </li>
@@ -36,11 +36,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'add_habit' %}"> Add habit</a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                 </li>
-                
+
             {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">Log In</a>
@@ -62,26 +62,29 @@
                     {% endblock %}
                 </div>
             </div>
-
+            
+        
             <!-- Badge section -->
-            <div class="col-md-4">
-                <div class="badge-section">
-                    <h5>Your Badges</h5>
-                    {% for badge in user_badges %}
-                        <div class="reward-badge">
-                           {% if badge == "Starter Badge" %}
-                                <i class="fas fa-medal starter-badge" title="Starter Badge"></i>
-                           {% elif badge == "Consistency Badge" %}
-                                <i class="fas fa-award consistency-badge" title="Consistency Badge"></i>
-                           {% elif badge == "Master Badge" %}
-                                <i class="fas fa-trophy master-badge" title="Master Badge"></i>
-                           {% endif %}
-                        </div>
-                    {% empty %}
-                        <p>No badges earned yet.</p>
-                    {% endfor %}
+            {% if user.is_authenticated %}
+                <div class="col-md-4">
+                    <div class="badge-section">
+                        <h5>Your Badges</h5>
+                        {% for badge in user_badges %}
+                            <div class="reward-badge">
+                               {% if badge == "Starter Badge" %}
+                                    <i class="fas fa-medal starter-badge" title="Starter Badge"></i>
+                               {% elif badge == "Consistency Badge" %}
+                                    <i class="fas fa-award consistency-badge" title="Consistency Badge"></i>
+                               {% elif badge == "Master Badge" %}
+                                    <i class="fas fa-trophy master-badge" title="Master Badge"></i>
+                               {% endif %}
+                            </div>
+                        {% empty %}
+                            <p>No badges earned yet.</p>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 

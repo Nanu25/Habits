@@ -6,6 +6,20 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* Apply flexbox to the body */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure the content takes all available space */
+body > .container {
+    flex: 1;
+}
+
 .navbar {
     background-color: #6c63ff;
     padding: 10px 20px;
@@ -137,7 +151,6 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     transition: transform 0.2s ease;
 }
 
-/* Footer */
 .footer {
     text-align: center;
     padding: 20px;
@@ -145,6 +158,8 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     color: #fff;
     border-top: 5px solid #4b42d3;
     margin-top: 20px; /* Add space above the footer */
+    position: relative;
+    width: 100%;
 }
 
 .footer a {
@@ -157,17 +172,17 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     text-decoration: underline;
 }
 
-/* Make sure the body content fills at least the viewport height minus the footer height */
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
+/*!* Make sure the body content fills at least the viewport height minus the footer height *!*/
+/*body {*/
+/*    min-height: 100vh;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
 
-/* Main content area to grow to fill the space */
-.body {
-    flex: 1;
-}
+/*!* Main content area to grow to fill the space *!*/
+/*.body {*/
+/*    flex: 1;*/
+/*}*/
 
 /* Login Status Styles */
 .login-status {
@@ -205,6 +220,7 @@ body {
     border: none;
     border-radius: 8px;
     background-color: #ffffff;
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow effect */
 }
 
 .habit-card .card-title {
@@ -220,6 +236,10 @@ body {
     font-size: 0.9rem;
 }
 
+/* Add shadow on hover */
+.habit-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
 /* Button styles */
 .btn-primary {
     background-color: #007bff;

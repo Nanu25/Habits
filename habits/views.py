@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
 from habits.models import User, Habit
+from habits.templatetags.custom_filters import get_badge
 
 
 # Create your views here.
@@ -30,16 +31,7 @@ def main_page(request):
         if habit.times_completed >= 30:
             total_completed += 1
 
-    # Determine badges based on the total completed habits
-    user_badges = []
-    if total_completed >= 1:
-        user_badges.append("Starter Badge")
-    if total_completed >= 5:
-        user_badges.append("Consistency Badge")
-    if total_completed >= 10:
-        user_badges.append("Master Badge")
-
-
+    user_badges = get_badge(total_completed)
     return render(request, "habits/main_page.html", {
         "habits": habits,
         "user_badges": user_badges
@@ -106,7 +98,17 @@ def add_habit(request):
         new_habit = Habit(user=request.user, habit=habit, description=description, status=status, private=private)
         new_habit.save()
         return redirect('main_page')  # Redirect to a page of your choice after adding the habit
-    return render(request, "habits/add_habit.html")
+
+    habits = Habit.objects.filter(user=request.user)
+    total_completed = 0
+    for habit in habits:
+        if habit.times_completed >= 30:
+            total_completed += 1
+
+    user_badges = get_badge(total_completed)
+    return render(request, "habits/add_habit.html", {
+        "user_badges": user_badges
+    })
 
 
 @csrf_exempt  # Use this only if you are handling CSRF manually in the fetch request
@@ -138,8 +140,17 @@ def top_habits(request):
         .annotate(habit_count=Count('habit'))
         .order_by('-habit_count')[:6]
     )
+
+    habits = Habit.objects.filter(user=request.user)
+    total_completed = 0
+    for habit in habits:
+        if habit.times_completed >= 30:
+            total_completed += 1
+
+    user_badges = get_badge(total_completed)
     return render(request, 'habits/top_habits.html', {
-        'top_habits': top_habit
+        'top_habits': top_habit,
+        'user_badges': user_badges
     })
 
 
