@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-2aa7-6)d0tie8hwdx!0jg0_tnleu-i_pc^wjk^(9u%f9ql00di
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['my-habit-tracker-0591dbd6deef.herokuapp.com']
 
 AUTH_USER_MODEL = 'habits.User'
 
