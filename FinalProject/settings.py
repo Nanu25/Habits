@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-2aa7-6)d0tie8hwdx!0jg0_tnleu-i_pc^wjk^(9u%f9ql00di
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['my-habit-tracker-0591dbd6deef.herokuapp.com']
+ALLOWED_HOSTS = ['my-habit-tracker-0591dbd6deef.herokuapp.com',
+                'localhost',
+                 ]
 
 AUTH_USER_MODEL = 'habits.User'
 
@@ -128,9 +130,9 @@ STATICFILES_DIRS = [
 ]
 
 # Ensure you have this setting to find static files in your app directories
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
 # Additional settings for Heroku
 if 'DATABASE_URL' in os.environ:
