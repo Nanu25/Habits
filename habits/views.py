@@ -1,3 +1,4 @@
+from datetime import timezone
 from sqlite3 import IntegrityError
 
 from django.contrib.auth import logout, authenticate, login
@@ -31,7 +32,9 @@ def main_page(request):
         if habit.times_completed >= 30:
             total_completed += 1
 
+
     user_badges = get_badge(total_completed)
+
     return render(request, "habits/main_page.html", {
         "habits": habits,
         "user_badges": user_badges

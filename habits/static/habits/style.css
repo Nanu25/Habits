@@ -7,6 +7,7 @@ body {
     padding: 0;
 }
 
+
 /* Apply flexbox to the body */
 html, body {
     height: 100%;
@@ -65,7 +66,7 @@ p, li {
     font-size: 16px;
 }
 
-/* Updated Buttons */
+/*  Buttons */
 .btn {
     background-color: #FF5733; /* Bright and contrasting orange color */
     color: #fff;
@@ -190,9 +191,9 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     color: #555;
     background-color: #e0e0e0;
     padding: 10px;
-    text-align: center;
-    margin: 20px auto;
-    max-width: 200px;
+    text-align: left;
+    margin: 20px 0 20px 20px; /* Adds 20px margin on the left */
+    max-width: 150px; /* Reduced width for a narrower box */
     border-radius: 5px;
 }
 
@@ -259,23 +260,80 @@ body {
 }
 
 
-/* Welcome page styles */
-.welcome-header {
-    margin-bottom: 50px;
+/* General container styling */
+.container {
+    max-width: 1100px;
 }
 
+/* Welcome header styling */
 .welcome-header h2 {
     font-size: 2.5rem;
     color: #343a40;
+    margin-bottom: 20px;
 }
 
 .welcome-header p {
     color: #6c757d;
+    font-size: 1.2rem;
+}
+
+/* Ensure all boxes have the same height */
+.habit-box {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    min-height: 350px; /* Set a minimum height to ensure uniformity */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure all images are the same size and aligned at the same height */
+.habit-image {
+    max-height: 180px; /* Set a consistent max height */
+    width: auto;
+    margin: 0 auto 15px; /* Center the images */
+    object-fit: contain; /* Contain the image within the given size */
+}
+
+.habit-box h4 {
+    margin-top: 20px;
+}
+
+.habit-box p {
+    flex-grow: 1;
+}
+
+/* Feature section styling */
+.feature-img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Buttons - no changes needed since you specified they are already looking great */
+
+/* Why Habits section styling */
+.why-habits {
+    background-color: #f8f9fa;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .why-habits h3 {
     font-size: 2rem;
     color: #007bff;
+    margin-bottom: 20px;
 }
 
 .why-habits p {
@@ -283,6 +341,21 @@ body {
     color: #495057;
     max-width: 700px;
     margin: auto;
+}
+
+/* Adjust spacing for the feature section */
+.row.mt-5 {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Ensure buttons remain unchanged */
+.btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
 }
 
 /* Button styles */

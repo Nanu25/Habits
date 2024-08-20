@@ -91,7 +91,7 @@
                     // Update the status text based on the new value
                     const statusElement = document.querySelector(`#status-${habitId}`);
                     const progressBarElement = document.querySelector(`#progress-bar-${habitId}`);
-                    
+
                     if (newTimesCompleted >= 30) {
                         statusElement.innerHTML = '<span class="badge badge-success">Congrats, you built a habit!</span>';
                         progressBarElement.classList.remove('bg-warning');
@@ -118,7 +118,6 @@
             }
         });
     });
-
 
     </script>
     
