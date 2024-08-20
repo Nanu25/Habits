@@ -4,10 +4,19 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
     color: #333;
     display: flex;
     flex-direction: column;
+}
+
+body {
+    background-image: url("imagineback1.jpg");
+    background-size: cover; /* Ensures the image covers the entire screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Keeps the background image fixed in place */
+    min-height: 100vh; /* Ensures the body is at least the height of the viewport */
+    width: 100%; /* Ensures the background covers the entire width */
 }
 
 /* Main content container */
@@ -23,7 +32,37 @@ html, body {
 
 /* Additional container styling */
 .container {
-    max-width: 900px;
+    max-width: 1000px; /* Adjusted to center the main content more */
+    margin: 0 auto;    /* Ensures the container is centered horizontally */
+}
+
+/* Flexbox to ensure proper alignment and centering */
+.container-fluid {
+    display: flex;
+    justify-content: center; /* Centers the row content horizontally */
+}
+
+/* Row styling */
+.row {
+    width: 100%;
+    max-width: 1200px; /* Ensures the row is not too wide */
+    margin: 0 auto;    /* Centers the row content */
+}
+
+/* Login Status Styles */
+.login-status {
+    font-size: 16px;
+    color: #555;
+    background-color: #e0e0e0;
+    padding: 10px;
+    text-align: left;
+    max-width: 200px;
+    border-radius: 5px;
+    position: fixed;        /* Fix the position */
+    top: 20px;              /* Distance from the top of the page */
+    right: 20px;            /* Distance from the right edge of the page */
+    z-index: 1000;          /* Ensure it appears above other content */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a slight shadow for better visibility */
 }
 
 /* Ensure the body content fills the viewport height minus the footer */
@@ -33,8 +72,11 @@ body {
 
 
 .navbar {
-    background-color: #6c63ff;
+    background: rgba(255, 255, 255, 0.1); /* Transparent background to let the image show through */
     padding: 10px 20px;
+    border-radius: 8px; /* Rounded corners for a smoother appearance */
+    box-shadow: none; /* Remove shadow to keep the navbar simple */
+    margin-bottom: 20px; /* Adds space below the navbar */
 }
 
 .nav-links {
@@ -47,17 +89,27 @@ body {
 }
 
 .nav-link {
-    color: #4b42d3 !important;
+    color: #ffffff !important; /* Light text color for contrast against the dark background */
     font-weight: bold;
     font-size: 16px;
     text-decoration: none;
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
 .nav-link:hover {
-    color: #FF5733 !important;
+    color: #FF5733 !important; /* Bright color on hover for emphasis */
     text-decoration: underline;
 }
 
+.nav-item {
+    padding: 5px 10px; /* Adds some padding around each link */
+    border-radius: 5px; /* Rounded edges for the links */
+    background-color: rgba(0, 0, 0, 0.3); /* Slightly darker transparent background on each item */
+}
+
+.nav-item:hover {
+    background-color: rgba(0, 0, 0, 0.5); /* Darker background on hover */
+}
 
 /* Headings and Text */
 h1, h2, h3 {
@@ -190,8 +242,6 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     border-radius: 5px;
 }
 
-
-
 .header h2 {
     color: #343a40;
 }
@@ -200,31 +250,110 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     color: #6c757d;
 }
 
-/* Card styles for habits */
-.habit-card {
-    border: none;
-    border-radius: 8px;
-    background-color: #ffffff;
-    transition: box-shadow 0.3s ease; /* Smooth transition for shadow effect */
+.blackboard-margin {
+    background-color: #d2b48c; /* Light brown background for blackboard margin */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Soft shadow to lift the content slightly */
+    margin: 20px auto;
+    max-width: 1200px;
 }
 
+/* Adjust header styles */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff; /* White text for strong contrast against dark background */
+    font-size: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow for the text */
+}
+
+
+/*!* Card styles for habits *!*/
+/*.habit-card {*/
+/*    border: none;*/
+/*    border-radius: 8px;*/
+/*    background-color: #ffffff;*/
+/*    transition: box-shadow 0.3s ease; !* Smooth transition for shadow effect *!*/
+/*}*/
+
+/*.habit-card .card-title {*/
+/*    font-size: 1.25rem;*/
+/*    color: #007bff;*/
+/*}*/
+
+/*.habit-card .card-text {*/
+/*    color: #495057;*/
+/*}*/
+
+/*.habit-card .badge {*/
+/*    font-size: 0.9rem;*/
+/*}*/
+
+/*!* Add shadow on hover *!*/
+/*.habit-card:hover {*/
+/*    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); !* Subtle shadow on hover *!*/
+/*}*/
+/* Card styles for habits with blackboard effect */
+
+
+/* Habit card styling for blackboard effect */
+.habit-card {
+    background-color: #2c3e50; /* Dark slate color for the blackboard */
+    color: #e0e0e0; /* Chalky white text color */
+    border: 2px solid #34495e; /* Slightly darker border to define the card edges */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    padding: 15px; /* Padding to create space inside the card */
+}
+
+/* Hover effect for habit card */
+.habit-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+    transform: scale(1.02); /* Slight scale effect on hover */
+}
+
+/* Card title and text styling */
 .habit-card .card-title {
     font-size: 1.25rem;
-    color: #007bff;
+    color: #ffeaa7; /* Soft yellow color resembling chalk */
+    margin-bottom: 10px;
 }
 
 .habit-card .card-text {
-    color: #495057;
+    color: #ecf0f1; /* Light color for chalk-like appearance */
+    margin-bottom: 15px;
 }
 
-.habit-card .badge {
-    font-size: 0.9rem;
+/* Progress bar styling */
+.progress-bar {
+    background-color: #ff6b6b; /* Vibrant red for contrast */
 }
 
-/* Add shadow on hover */
-.habit-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+/* Badge styling */
+.badge {
+    background-color: #1abc9c; /* Soft green for badges */
+    color: #ffffff; /* White text for readability */
 }
+
+.badge-warning {
+    background-color: #f39c12; /* Warning yellow */
+}
+
+.badge-primary {
+    background-color: #3498db; /* Blue for "Almost there!" */
+}
+
+.badge-success {
+    background-color: #2ecc71; /* Green for success */
+}
+
+.badge-secondary {
+    background-color: #95a5a6; /* Grey for "Keep going!" */
+}
+
+
 /* Button styles */
 .btn-primary {
     background-color: #007bff;
@@ -288,6 +417,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 .habit-box p {
     flex-grow: 1;
 }
+
 
 /* Feature section styling */
 .feature-img {
