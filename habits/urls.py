@@ -1,6 +1,7 @@
-
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -12,4 +13,4 @@ urlpatterns = [
     path('mark_done/<int:habit_id>/', views.mark_done, name='mark_done'),
     path('top_habits', views.top_habits, name='top_habits'),
 
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
