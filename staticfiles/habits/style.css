@@ -32,7 +32,7 @@ body {
 
 /* Additional container styling */
 .container {
-    max-width: 1000px; /* Adjusted to center the main content more */
+    max-width: 1500px; /* Adjusted to center the main content more */
     margin: 0 auto;    /* Ensures the container is centered horizontally */
 }
 
@@ -45,7 +45,7 @@ body {
 /* Row styling */
 .row {
     width: 100%;
-    max-width: 1200px; /* Ensures the row is not too wide */
+    max-width: 1300px; /* Ensures the row is not too wide */
     margin: 0 auto;    /* Centers the row content */
 }
 
@@ -72,13 +72,14 @@ body {
 
 
 .navbar {
-    background: rgba(255, 255, 255, 0.1); /* Transparent background to let the image show through */
+    background-color: transparent !important;
     padding: 10px 20px;
     border-radius: 8px; /* Rounded corners for a smoother appearance */
     box-shadow: none; /* Remove shadow to keep the navbar simple */
     margin-bottom: 20px; /* Adds space below the navbar */
 }
 
+/* Style the navigation links */
 .nav-links {
     display: flex;
     justify-content: center; /* Center the links horizontally */
@@ -88,23 +89,22 @@ body {
     margin: 0;
 }
 
+/* Style individual nav links */
 .nav-link {
-    color: #ffffff !important; /* Light text color for contrast against the dark background */
+    color: #fff !important; /* Set the link text color to white to match the background */
     font-weight: bold;
     font-size: 16px;
     text-decoration: none;
-    transition: color 0.3s ease; /* Smooth color transition */
 }
 
 .nav-link:hover {
-    color: #FF5733 !important; /* Bright color on hover for emphasis */
-    text-decoration: underline;
+    color: #FF5733 !important; /* Change color on hover */
+    text-decoration: underline; /* Underline text on hover */
 }
-
 .nav-item {
     padding: 5px 10px; /* Adds some padding around each link */
     border-radius: 5px; /* Rounded edges for the links */
-    background-color: rgba(0, 0, 0, 0.3); /* Slightly darker transparent background on each item */
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly darker transparent background on each item */
 }
 
 .nav-item:hover {
