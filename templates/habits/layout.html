@@ -21,7 +21,7 @@
     </div>
     {% endif %}
 
-   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="nav-links">
             {% if user.is_authenticated %}
                 <li class="nav-item">
@@ -47,11 +47,12 @@
         </div>
     </nav>
 
-<!-- Main content area -->
+
+   <!-- Main content area -->
 <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-center"> <!-- Center the row content horizontally -->
         <!-- Main habits section -->
-        <div class="col-md-9"> <!-- Adjusted for more width -->
+        <div class="col-md-8 offset-md-1"> <!-- Reduced width and added an offset to move it right -->
             <div class="main-content">
                 {% block body %}
                 {% endblock %}
@@ -65,13 +66,13 @@
                     <h5>Your Badges</h5>
                     {% for badge in user_badges %}
                         <div class="reward-badge">
-                           {% if badge == "Starter Badge" %}
+                            {% if badge == "Starter Badge" %}
                                 <i class="fas fa-medal starter-badge" title="Starter Badge"></i>
-                           {% elif badge == "Consistency Badge" %}
+                            {% elif badge == "Consistency Badge" %}
                                 <i class="fas fa-award consistency-badge" title="Consistency Badge"></i>
-                           {% elif badge == "Master Badge" %}
+                            {% elif badge == "Master Badge" %}
                                 <i class="fas fa-trophy master-badge" title="Master Badge"></i>
-                           {% endif %}
+                            {% endif %}
                         </div>
                     {% empty %}
                         <p>No badges earned yet.</p>
@@ -81,6 +82,7 @@
         {% endif %}
     </div>
 </div>
+
 
     <div class="footer">
         Made with ❤️ by <strong> Grancea Alexandru</strong>
