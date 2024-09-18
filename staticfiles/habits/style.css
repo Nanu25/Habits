@@ -263,6 +263,13 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     text-decoration: underline;
 }
 
+.footer a.footer-link {
+    color: #f5f5f5 !important; /* Force white color for the link */
+    font-weight: 700; /* Strong emphasis */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
 /* Login Status Styles */
 .login-status {
     font-size: 16px;
