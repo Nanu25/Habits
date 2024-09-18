@@ -11,82 +11,87 @@
 
 </head>
 <body>
-    <div class="header">
-        <h1>Habits</h1>
-    </div>
+    <div class="gradient-background"> <!-- Wrap everything inside this div -->
 
-    {% if user.is_authenticated %}
-    <div class="login-status">
-        Login as: {{ user.username }} <i class="fa-solid fa-certificate" style="color: #74C0FC;"></i>
-    </div>
-    {% endif %}
+{#        <div class="header">#}
+{#            <h1>Habits</h1>#}
+{#        </div>#}
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="nav-links">
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'main_page' %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'top_habits' %}">Top habits</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'add_habit' %}"> Add habit</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'login' %}">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-            {% endif %}
-        </div>
-    </nav>
-
-
-   <!-- Main content area -->
-<div class="container-fluid">
-    <div class="row justify-content-center"> <!-- Center the row content horizontally -->
-        <!-- Main habits section -->
-        <div class="col-md-8 offset-md-1"> <!-- Reduced width and added an offset to move it right -->
-            <div class="main-content">
-                {% block body %}
-                {% endblock %}
-            </div>
-        </div>
-
-        <!-- Badge section -->
         {% if user.is_authenticated %}
-            <div class="col-md-3"> <!-- Adjusted for less width -->
-                <div class="badge-section">
-                    <h5>Your Badges</h5>
-                    {% for badge in user_badges %}
-                        <div class="reward-badge">
-                            {% if badge == "Starter Badge" %}
-                                <i class="fas fa-medal starter-badge" title="Starter Badge"></i>
-                            {% elif badge == "Consistency Badge" %}
-                                <i class="fas fa-award consistency-badge" title="Consistency Badge"></i>
-                            {% elif badge == "Master Badge" %}
-                                <i class="fas fa-trophy master-badge" title="Master Badge"></i>
-                            {% endif %}
-                        </div>
-                    {% empty %}
-                        <p>No badges earned yet.</p>
-                    {% endfor %}
-                </div>
-            </div>
+        <div class="login-status">
+            Login as: {{ user.username }} <i class="fa-solid fa-certificate" style="color: #74C0FC;"></i>
+        </div>
         {% endif %}
-    </div>
-</div>
 
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="nav-links">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main_page' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'top_habits' %}">Top habits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add_habit' %}"> Add habit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+            </div>
+        </nav>
 
+        <!-- Main content area -->
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <!-- Main habits section -->
+                <div class="col-md-8 offset-md-1">
+                    <div class="main-content">
+                        {% block body %}
+                        {% endblock %}
+                    </div>
+                </div>
+
+                <!-- Badge section -->
+                {% if user.is_authenticated %}
+                    <div class="col-md-3">
+                        <div class="badge-section">
+                            <h5>Your Badges</h5>
+                            {% for badge in user_badges %}
+                                <div class="reward-badge">
+                                    {% if badge == "Starter Badge" %}
+                                        <i class="fas fa-medal starter-badge" title="Starter Badge"></i>
+                                    {% elif badge == "Consistency Badge" %}
+                                        <i class="fas fa-award consistency-badge" title="Consistency Badge"></i>
+                                    {% elif badge == "Master Badge" %}
+                                        <i class="fas fa-trophy master-badge" title="Master Badge"></i>
+                                    {% endif %}
+                                </div>
+                            {% empty %}
+                                <p>No badges earned yet.</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div> 
+    
     <div class="footer">
         Made with ❤️ by <strong> Grancea Alexandru</strong>
     </div>
 
 </body>
+
+
+
 </html>

@@ -1,28 +1,61 @@
 /* Basic page styles */
 html, body {
-    height: 100%;
+    height: auto; /* Allow height to be determined by the content */
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body fills the screen at least */
+}
+.body, .content {
+    flex: 1; /* Ensures the content expands to take up available space */
+}
+
+
+/* The main content will grow to fill available space */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/*body {*/
+/*    background-image: url("imagineback1.jpg");*/
+/*    background-size: cover; !* Ensures the image covers the entire screen *!*/
+/*    background-position: center; !* Centers the image *!*/
+/*    background-repeat: no-repeat; !* Prevents the image from repeating *!*/
+/*    background-attachment: fixed; !* Keeps the background image fixed in place *!*/
+/*    min-height: 100vh; !* Ensures the body is at least the height of the viewport *!*/
+/*    width: 100%; !* Ensures the background covers the entire width *!*/
+/*}*/
+
+/* Apply gradient to the entire background div */
+.gradient-background {
+    background: linear-gradient(white, grey, deepskyblue); /* Bright colors */
+    background-size: 400% 400%; /* Ensures smooth gradient movement */
+    animation: gradient-animation 15s ease infinite; /* Infinite smooth transition */
+    min-height: 100vh; /* Make sure it covers the whole viewport */
+    padding: 20px; /* Add some padding around the container */
     display: flex;
     flex-direction: column;
 }
 
-body {
-    background-image: url("imagineback1.jpg");
-    background-size: cover; /* Ensures the image covers the entire screen */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    background-attachment: fixed; /* Keeps the background image fixed in place */
-    min-height: 100vh; /* Ensures the body is at least the height of the viewport */
-    width: 100%; /* Ensures the background covers the entire width */
+/* Keyframes for the gradient animation */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Main content container */
 .container, .body {
     flex: 1;
-    max-width: 1200px;
+    max-width: 1200px; /* Keep content within a reasonable width */
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -30,16 +63,18 @@ body {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Additional container styling */
+/* Adjust container width for better centering */
 .container {
-    max-width: 1500px; /* Adjusted to center the main content more */
-    margin: 0 auto;    /* Ensures the container is centered horizontally */
+    max-width: 1400px; /* Reduced width for better fitting */
+    margin: 0 auto;
 }
 
-/* Flexbox to ensure proper alignment and centering */
+/* Flexbox layout for horizontal centering */
 .container-fluid {
     display: flex;
-    justify-content: center; /* Centers the row content horizontally */
+    justify-content: center;
+    flex-wrap: wrap; /* Allow elements to wrap */
+    padding: 20px;
 }
 
 /* Row styling */
@@ -48,6 +83,7 @@ body {
     max-width: 1300px; /* Ensures the row is not too wide */
     margin: 0 auto;    /* Centers the row content */
 }
+
 
 /* Login Status Styles */
 .login-status {
@@ -63,11 +99,6 @@ body {
     right: 20px;            /* Distance from the right edge of the page */
     z-index: 1000;          /* Ensure it appears above other content */
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a slight shadow for better visibility */
-}
-
-/* Ensure the body content fills the viewport height minus the footer */
-body {
-    min-height: 100vh;
 }
 
 
@@ -216,7 +247,10 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     color: #fff;
     border-top: 5px solid #4b42d3;
     width: 100%;
-    margin-top: auto; /* Pushes the footer to the bottom */
+    position: relative; /* Ensures it stays at the bottom of the content */
+    bottom: 0; /* Aligns it at the bottom */
+    left: 0;
+    margin-top: auto; /* Pushes the footer to the bottom when content is less */
 }
 
 .footer a {
@@ -228,7 +262,6 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 .footer a:hover {
     text-decoration: underline;
 }
-
 
 /* Login Status Styles */
 .login-status {
