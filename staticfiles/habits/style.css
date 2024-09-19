@@ -6,6 +6,8 @@ html, body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Ensure the body fills the screen at least */
+    width: 100%;
+    overflow-x: hidden;
 }
 .body, .content {
     flex: 1; /* Ensures the content expands to take up available space */
@@ -18,15 +20,6 @@ body {
     flex-direction: column;
     justify-content: space-between;
 }
-/*body {*/
-/*    background-image: url("imagineback1.jpg");*/
-/*    background-size: cover; !* Ensures the image covers the entire screen *!*/
-/*    background-position: center; !* Centers the image *!*/
-/*    background-repeat: no-repeat; !* Prevents the image from repeating *!*/
-/*    background-attachment: fixed; !* Keeps the background image fixed in place *!*/
-/*    min-height: 100vh; !* Ensures the body is at least the height of the viewport *!*/
-/*    width: 100%; !* Ensures the background covers the entire width *!*/
-/*}*/
 
 /* Apply gradient to the entire background div */
 .gradient-background {
@@ -616,5 +609,36 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 @media only screen and (max-width: 576px) {
     h1 {
         font-size: 1.5rem; /* Smaller font size on mobile */
+    }
+}
+
+
+/* General mobile devices (max-width of 575px) */
+@media only screen and (max-width: 575px) {
+    .col-12.col-lg-4.col-md-4 {
+        width: 100%;
+        padding: 5px;
+    }
+}
+
+/* iPhones with similar widths (11, 12, 13 Pro Max) */
+@media only screen and (min-width: 375px) and (max-width: 430px) {
+    .col-12.col-lg-4.col-md-4 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+
+/* Samsung Galaxy S23 Ultra */
+@media only screen and (min-width: 430px) and (max-width: 432px) {
+    .col-12.col-lg-4.col-md-4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media only screen and (max-width: 729px) {
+    .login-status {
+        display: none;
     }
 }
