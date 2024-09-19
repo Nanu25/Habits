@@ -462,7 +462,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 /* Feature section styling */
 .feature-img {
     max-width: 100%;
-    height: 200px;
+    height: auto;
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -581,3 +581,40 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     margin-left: 20px; /* Adjust this as needed for spacing */
 }
 
+
+/* For small devices (phones) */
+@media only screen and (max-width: 576px) {
+    .navbar {
+        font-size: 14px;
+    }
+    .main-content {
+        padding: 10px;
+    }
+}
+
+/* For medium devices (tablets) */
+@media only screen and (min-width: 768px) {
+    .navbar {
+        font-size: 16px;
+    }
+}
+
+/* For large devices (desktops) */
+@media only screen and (min-width: 992px) {
+    .navbar {
+        font-size: 18px;
+    }
+}
+
+
+@media only screen and (max-width: 576px) {
+    .badge-section {
+        display: none; /* Hide on small screens */
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    h1 {
+        font-size: 1.5rem; /* Smaller font size on mobile */
+    }
+}
