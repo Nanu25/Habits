@@ -438,7 +438,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 
 /* Ensure all images are the same size and aligned at the same height */
 .habit-image {
-    max-height: 180px; /* Set a consistent max height */
+    max-height: 180px;
     width: auto;
     margin: 0 auto 15px; /* Center the images */
     object-fit: contain; /* Contain the image within the given size */
