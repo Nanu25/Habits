@@ -331,15 +331,30 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 /* Card styles for habits with blackboard effect */
 
 
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Habit card styling for blackboard effect */
 .habit-card {
-    background-color: #2c3e50; /* Dark slate color for the blackboard */
-    color: #e0e0e0; /* Chalky white text color */
-    border: 2px solid #34495e; /* Slightly darker border to define the card edges */
+    background-color: #2c3e50;
+    color: #e0e0e0;
+    border: 2px solid #34495e;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
-    padding: 15px; /* Padding to create space inside the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    padding: 15px;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: calc(0.3s * var(--card-index));
 }
 
 /* Hover effect for habit card */
@@ -359,6 +374,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     color: #ecf0f1; /* Light color for chalk-like appearance */
     margin-bottom: 15px;
 }
+
 
 /* Progress bar styling */
 .progress-bar {
@@ -411,18 +427,71 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 .container {
     max-width: 1100px;
 }
-
 /* Welcome header styling */
 .welcome-header h2 {
-    font-size: 2.5rem;
-    color: #343a40;
+    font-size: 3rem; /* Increase the size */
+    background: linear-gradient(90deg, #6a11cb, #2575fc); /* Gradient color */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the text take the gradient */
     margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    animation: fadeInScale 1.5s ease-out; /* Add animation */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle 3D shadow */
 }
 
+/* Add a fancy underline effect */
+.welcome-header h2::after {
+    content: '';
+    width: 60%;
+    height: 4px;
+    background-color: #2575fc;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    animation: underlineSlideIn 1s ease-out forwards;
+}
+
+/* Paragraph styling */
 .welcome-header p {
     color: #6c757d;
     font-size: 1.2rem;
+    animation: fadeIn 2s ease-out;
 }
+
+/* Keyframe animations */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Slide-in underline animation */
+@keyframes underlineSlideIn {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 60%;
+    }
+}
+
 
 /* Ensure all boxes have the same height */
 .habit-box {
@@ -438,7 +507,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 
 /* Ensure all images are the same size and aligned at the same height */
 .habit-image {
-    max-height: 180px; /* Set a consistent max height */
+    max-height: 180px;
     width: auto;
     margin: 0 auto 15px; /* Center the images */
     object-fit: contain; /* Contain the image within the given size */
@@ -541,15 +610,15 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 .habit-info {
     font-size: 1.1rem;
     font-weight: bold;
-    color: #ffffff;  /* White text for strong contrast */
-    background: linear-gradient(45deg, #ff6b6b, #f94d6a);  /* Vibrant gradient background */
+    color: #ffffff;
+    background: linear-gradient(45deg, #ff6b6b, #f94d6a);
     padding: 10px 15px;
     margin-top: 12px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Soft shadow for depth */
-    border: 2px solid #ff4757;  /* Bold border to define the area */
-    letter-spacing: 0.5px;  /* Slight letter spacing for readability */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ff4757;
+    letter-spacing: 0.5px;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
@@ -557,6 +626,8 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     transform: scale(1.05);  /* Slightly enlarge on hover for interaction */
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);  /* Enhanced shadow on hover */
 }
+
+
 
 .main-content {
     padding: 20px;
