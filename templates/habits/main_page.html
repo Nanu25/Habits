@@ -12,13 +12,14 @@
         <div class="habit-list mt-4">
             <div class="row">
                 {% for habit in habits %}
-                  <div class="col-12 col-lg-4 col-md-4 mb-3" style="--card-index: {{ forloop.counter }}">
+                  <div class="col-12 col-md-12 col-lg-4 mb-3" style="--card-index: {{ forloop.counter }}">
                         <div class="card shadow-sm habit-card" id="habit-card-{{ habit.id }}">
                             <div class="card-body">
-                                <h5 class="card-title">{{ habit.habit }}</h5>
+                                <h5 class="card-title">{{ habit.habit }}</h5>   
                                 <p class="card-text">{{ habit.description }}</p>
                             <div class="progress">
-                                <div id="progress-bar-{{ habit.id }}" class="progress-bar bg-warning"
+                                  <div id="progress-bar-{{ habit.id }}"
+                                     class="progress-bar {% if habit.times_completed >= 30 %}bg-success{% else %}bg-warning{% endif %}"
                                      role="progressbar"
                                      style="width: {{ habit.times_completed|percentage:30 }}%;"
                                      aria-valuenow="{{ habit.times_completed }}"
@@ -28,24 +29,22 @@
                                 </div>
                             </div>
                             <p class="card-text">
-                                <small class="text-muted">Status:
-                                    <span id="status-{{ habit.id }}">
+                                <small class="status-label">Status:</small>
+                                      <div id="status-{{ habit.id }}" class="mt-1">
                                         {% if habit.times_completed >= 30 %}
-                                            <span class="badge badge-success">Congrats, you built a habit! </span>
+                                            <span class="badge badge-success">Congrats, you built a habit!</span>
                                         {% elif habit.times_completed >= 25 %}
                                             <span class="badge badge-primary">Almost there!</span>
                                         {% elif habit.times_completed >= 10 %}
-                                            <span class="badge badge-secondary"> Keep going! </span>
+                                            <span class="badge badge-secondary">Keep going!</span>
                                         {% else %}
                                             <span class="badge badge-warning">Habit being prepared</span>
                                         {% endif %}
-                                    </span>
-                                </small>
+                                    </div>
                             </p>
-
-                            <p class="card-text">
-                                Times completed: <span id="times-completed-{{ habit.id }}">{{ habit.times_completed }}</span>
-                            </p>
+                                <p class="card-text no-wrap">
+                                    Times completed: <span id="times-completed-{{ habit.id }}">{{ habit.times_completed }}</span>
+                                </p>
                             <button class="btn btn-primary btn-sm mark-done-btn" data-habit-id="{{ habit.id }}">Mark as Done</button>
                             </div>
                         </div>

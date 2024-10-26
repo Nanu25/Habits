@@ -368,11 +368,20 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     font-size: 1.25rem;
     color: #ffeaa7; /* Soft yellow color resembling chalk */
     margin-bottom: 10px;
+    white-space: nowrap; /* Prevents the text from breaking onto a new line */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds an ellipsis (...) when text overflows */
+    position: relative;
 }
+
 
 .habit-card .card-text {
     color: #ecf0f1; /* Light color for chalk-like appearance */
     margin-bottom: 15px;
+    white-space: nowrap; /* Prevents the text from breaking onto a new line */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis; /* Adds an ellipsis (...) when text overflows */
+    position: relative;
 }
 
 
@@ -637,6 +646,17 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     margin-top: 20px;
 }
 
+.status-label {
+    font-size: 1.1rem;      /* Slightly larger font size */
+    font-weight: bold;      /* Bold text for emphasis */
+    color: whitesmoke;         /* Darker color for better visibility */
+}
+
+.no-wrap {
+    white-space: nowrap; /* Prevents the text from breaking onto a new line */
+}
+
+
 .badge-section {
     padding: 20px;
     background-color: #f8f9fa;
@@ -647,18 +667,54 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 }
 
 
-/* For small devices (phones) */
-@media only screen and (max-width: 576px) {
+/* For small devices (phones, general mobile devices) */
+@media only screen and (max-width: 1200px) {
     .navbar {
         font-size: 14px;
     }
     .main-content {
         padding: 10px;
     }
+    h1 {
+        font-size: 1.5rem; /* Smaller font size on mobile */
+    }
+    .col-12.col-lg-4.col-md-4 {
+        width: 100%;
+        padding: 5px;
+    }
+}
+
+/*!* Specific phone sizes: iPhones (11, 12, 13 Pro Max) *!*/
+/*@media only screen and (min-width: 375px) and (max-width: 430px) {*/
+/*    .col-12.col-lg-4.col-md-4 {*/
+/*        width: 100%;*/
+/*        margin-bottom: 15px;*/
+/*    }*/
+/*}*/
+
+/*!* Samsung Galaxy S23 Ultra *!*/
+/*@media only screen and (min-width: 430px) and (max-width: 432px) {*/
+/*    .col-12.col-lg-4.col-md-4 {*/
+/*        width: 100%;*/
+/*        margin-bottom: 20px;*/
+/*    }*/
+/*}*/
+
+/* For small tablets and phones, hiding certain sections */
+@media only screen and (max-width: 1200px) {
+    .badge-section {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .login-status {
+        display: none;
+    }
 }
 
 /* For medium devices (tablets) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1200px) {
     .navbar {
         font-size: 16px;
     }
@@ -671,49 +727,6 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     }
 }
 
-
-@media only screen and (max-width: 576px) {
-    .badge-section {
-        display: none; /* Hide on small screens */
-    }
-}
-
-@media only screen and (max-width: 576px) {
-    h1 {
-        font-size: 1.5rem; /* Smaller font size on mobile */
-    }
-}
-
-
-/* General mobile devices (max-width of 575px) */
-@media only screen and (max-width: 575px) {
-    .col-12.col-lg-4.col-md-4 {
-        width: 100%;
-        padding: 5px;
-    }
-}
-
-/* iPhones with similar widths (11, 12, 13 Pro Max) */
-@media only screen and (min-width: 375px) and (max-width: 430px) {
-    .col-12.col-lg-4.col-md-4 {
-        width: 100%;
-        margin-bottom: 15px;
-    }
-}
-
-/* Samsung Galaxy S23 Ultra */
-@media only screen and (min-width: 430px) and (max-width: 432px) {
-    .col-12.col-lg-4.col-md-4 {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-}
-
-@media only screen and (max-width: 729px) {
-    .login-status {
-        display: none;
-    }
-}
 
 /*!* Responsive layout for small screens *!*/
 /*@media only screen and (max-width: 470px) {*/
