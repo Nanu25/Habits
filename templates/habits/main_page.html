@@ -30,17 +30,18 @@
                             </div>
                             <p class="card-text">
                                 <small class="status-label">Status:</small>
-                                      <div id="status-{{ habit.id }}" class="mt-1">
+                                    <div id="status-{{ habit.id }}" class="mt-1">
                                         {% if habit.times_completed >= 30 %}
-                                            <span class="badge badge-success">Congrats, you built a habit!</span>
+                                            <span class="badge badge-success status-badge">Congrats, you built a habit!</span>
                                         {% elif habit.times_completed >= 25 %}
-                                            <span class="badge badge-primary">Almost there!</span>
+                                            <span class="badge badge-primary status-badge">Almost there!</span>
                                         {% elif habit.times_completed >= 10 %}
-                                            <span class="badge badge-secondary">Keep going!</span>
+                                            <span class="badge badge-secondary status-badge">Keep going!</span>
                                         {% else %}
-                                            <span class="badge badge-warning">Habit being prepared</span>
+                                            <span class="badge badge-warning status-badge">Habit being prepared</span>
                                         {% endif %}
                                     </div>
+
                             </p>
                                 <p class="card-text no-wrap">
                                     Times completed: <span id="times-completed-{{ habit.id }}">{{ habit.times_completed }}</span>

@@ -47,21 +47,14 @@
                 {% endif %}
             </div>
         </nav>
-
-        <!-- Main content area -->
-        <div class="container-fluid">
+        
+                <!-- Main content area -->
+              <div class="container-fluid">
             <div class="row justify-content-center">
-                <!-- Main habits section -->
-                <div class="col-md-8 offset-md-1">
-                    <div class="main-content">
-                        {% block body %}
-                        {% endblock %}
-                    </div>
-                </div>
-
-                <!-- Badge section -->
+        
+                <!-- Badge section on the left side -->
                 {% if user.is_authenticated %}
-                    <div class="col-md-3">
+                    <div class="col-md-3 order-md-1">
                         <div class="badge-section">
                             <h5>Your Badges</h5>
                             {% for badge in user_badges %}
@@ -80,8 +73,18 @@
                         </div>
                     </div>
                 {% endif %}
+        
+                <!-- Main habits section -->
+                <div class="col-md-9 order-md-2">
+                    <div class="main-content">
+                        {% block body %}
+                        {% endblock %}
+                    </div>
+                </div>
+        
             </div>
         </div>
+
 
     </div> 
     
