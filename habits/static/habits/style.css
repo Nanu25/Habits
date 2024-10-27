@@ -67,7 +67,7 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap; /* Allow elements to wrap */
-    padding: 20px;
+    padding: 2px;
 }
 
 /* Row styling */
@@ -269,10 +269,10 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     font-size: 16px;
     color: #555;
     background-color: #e0e0e0;
-    padding: 10px;
+    padding: 1px;
     text-align: left;
-    margin: 20px 0 20px 20px; /* Adds 20px margin on the left */
-    max-width: 150px; /* Reduced width for a narrower box */
+    margin: 10px 0 10px 10px; /* Adds 20px margin on the left */
+    max-width: 70px; /* Reduced width for a narrower box */
     border-radius: 5px;
 }
 
@@ -436,6 +436,8 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 .container {
     max-width: 1100px;
 }
+
+
 /* Welcome header styling */
 .welcome-header h2 {
     font-size: 3rem; /* Increase the size */
@@ -639,7 +641,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 
 
 .main-content {
-    padding: 20px;
+    padding: 1rem;
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
@@ -652,23 +654,32 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
     color: whitesmoke;         /* Darker color for better visibility */
 }
 
+.status-badge {
+    max-width: 170px; /* Adjust width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block; /* Ensures truncation applies */
+}
+
+
 .no-wrap {
     white-space: nowrap; /* Prevents the text from breaking onto a new line */
 }
 
 
 .badge-section {
+    text-align: left;
     padding: 20px;
     background-color: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    margin-left: 20px; /* Adjust this as needed for spacing */
+    margin-left: -100px; /* Adjust this as needed for spacing */
 }
 
 
-/* For small devices (phones, general mobile devices) */
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1460px) {
     .navbar {
         font-size: 14px;
     }
@@ -682,7 +693,17 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
         width: 100%;
         padding: 5px;
     }
+
+    .badge-section {
+        margin-left: -25px;
+    }
+
+    .login-status {
+        display: none;
+    }
+
 }
+
 
 /*!* Specific phone sizes: iPhones (11, 12, 13 Pro Max) *!*/
 /*@media only screen and (min-width: 375px) and (max-width: 430px) {*/
