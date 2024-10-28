@@ -31,6 +31,14 @@ def main_page(request):
     for habit in habits:
         if habit.times_completed >= 30:
             total_completed += 1
+        if habit.times_completed < 10:
+            habit.status = "Habit at the beginning"
+        elif habit.times_completed < 20:
+            habit.status = "Keep going"
+        elif habit.times_completed < 30:
+            habit.status = "Almost there"
+        else:
+            habit.status = "Congrats, you built a habit!"
 
 
     user_badges = get_badge(total_completed)
